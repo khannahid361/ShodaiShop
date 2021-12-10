@@ -21,6 +21,7 @@ class CreateSubcategoriesTable extends Migration
                 ->references('id')
                 ->on('categories')
                 ->onDelete('cascade');
+            $table->string('subcat_image');
             $table->timestamps();
         });
     }
