@@ -14,12 +14,28 @@
             <div class="col-12 px-0">
                 <div id="slider" class="carousel slide w-100" data-bs-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-bs-target="#slider" data-bs-slide-to="0" class="active"></li>
+                        @for ($i = 0; $i < $sliders->count(); $i++)
+                            <li data-bs-target="#slider" data-bs-slide-to=" {{ $i }} "
+                                class="{{ $i == 0 ? 'active' : '' }}">
+                            </li>
+                        @endfor
+                        {{-- <li data-bs-target="#slider" data-bs-slide-to="0" class="active"></li>
                         <li data-bs-target="#slider" data-bs-slide-to="1"></li>
-                        <li data-bs-target="#slider" data-bs-slide-to="2"></li>
+                        <li data-bs-target="#slider" data-bs-slide-to="2"></li> --}}
                     </ol>
                     <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
+                        <?php
+                        $val = 0;
+                        ?>
+                        @foreach ($sliders as $slider)
+                            <?php
+                            $val++;
+                            ?>
+                            <div class="carousel-item {{ $val == 1 ? 'active' : '' }}">
+                                <img src="{{ asset('storage/images/' . $slider->slider_image) }}" class="slider-img">
+                            </div>
+                        @endforeach
+                        {{-- <div class="carousel-item active">
                             <img src="{{ asset('storage/images/slider-1.jpg') }}" class="slider-img">
                         </div>
                         <div class="carousel-item">
@@ -27,7 +43,7 @@
                         </div>
                         <div class="carousel-item">
                             <img src="{{ asset('storage/images/slider-3.jpg') }}" class="slider-img">
-                        </div>
+                        </div> --}}
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#slider" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

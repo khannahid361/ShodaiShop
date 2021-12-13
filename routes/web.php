@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -67,3 +69,23 @@ Route::get('/subcategory/{id}', [SubcategoryController::class, 'show'])->name('s
 Route::post('/subcategory/{id}', [SubcategoryController::class, 'update'])->name('updateSubcatgory');
 
 Route::get('/subcategory/delete/{id}', [SubcategoryController::class, 'destroy'])->name('deleteSubcategory');
+
+//Slider 
+
+Route::get('/slider', [SliderController::class, 'index']);
+
+Route::get('/slider/create', [SliderController::class, 'create'])->name('createSlider');
+
+Route::post('/slider', [SliderController::class, 'store'])->name('storeSlider');
+
+Route::get('/slider/edit/{id}', [SliderController::class, 'edit'])->name('editSlider');
+
+Route::get('/slider/{id}', [SliderController::class, 'show'])->name('showSlider');
+
+Route::post('/slider/{id}', [SliderController::class, 'update'])->name('updateSlider');
+
+Route::get('/slider/delete/{id}', [SliderController::class, 'destroy'])->name('deleteSlider');
+
+//Show slider
+
+Route::get('/', [PageController::class, 'showSlider']);

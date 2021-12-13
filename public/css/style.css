@@ -218,9 +218,17 @@ a.product-name:hover, a.product-name:focus {
 }
 
 .slider-img {
+    position: relative;
+    text-align: center;
     width: 100%;
     height: auto;
 }
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
 .large-icon, .large-text {
     color: #6c6c6c;
