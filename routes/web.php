@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,3 +51,19 @@ Route::get('/brand/edit/{id}', [BrandController::class, 'edit'])->name('editBran
 Route::get('/brand/delete/{id}', [BrandController::class, 'destroy'])->name('deleteBrand');
 
 Route::post('/brand/{id}', [BrandController::class, 'update'])->name('updateBrand');
+
+//subcategory
+
+Route::get('/subcategory', [SubcategoryController::class, 'index']);
+
+Route::get('/subcategory/create', [SubcategoryController::class, 'create'])->name('createSubcategory');
+
+Route::post('/subcategory', [SubcategoryController::class, 'store'])->name('storeSubcategory');
+
+Route::get('/subcategory/edit/{id}', [SubcategoryController::class, 'edit'])->name('editSubcategory');
+
+Route::get('/subcategory/{id}', [SubcategoryController::class, 'show'])->name('showSubcategory');
+
+Route::post('/subcategory/{id}', [SubcategoryController::class, 'update'])->name('updateSubcatgory');
+
+Route::get('/subcategory/delete/{id}', [SubcategoryController::class, 'destroy'])->name('deleteSubcategory');
