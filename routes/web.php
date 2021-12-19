@@ -3,20 +3,10 @@
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('customer.index');
@@ -89,3 +79,21 @@ Route::get('/slider/delete/{id}', [SliderController::class, 'destroy'])->name('d
 //Show slider
 
 Route::get('/', [PageController::class, 'showSlider']);
+
+//Product
+
+Route::get('/product/create', [ProductController::class, 'create'])->name('productCreate');
+
+Route::get('/product/getSubcategory/{id}', [ProductController::class, 'getSubcategory']);
+
+Route::post('/product', [ProductController::class, 'store'])->name('productStore');
+
+Route::get('/product', [ProductController::class, 'index']);
+
+Route::get('/product/delete/{id}', [ProductController::class, 'destroy'])->name('destroyProduct');
+
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('showProduct');
+
+Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('editProduct');
+
+Route::post('/product/{id}', [ProductController::class, 'update'])->name('updateProduct');
