@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <h1>Product <a href="{{ route('productCreate') }}">Create Product</a></h1>
     <table>
         <tr>
             <th>Product Name</th>

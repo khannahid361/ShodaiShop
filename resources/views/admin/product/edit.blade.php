@@ -41,6 +41,16 @@
                     id="" min="1" style="width:250px" placeholder="Enter Product Stock">
             </div>
             <div class="form-group">
+                <label for="">Cost Price:</label>
+                <input type="number" class="form-control" name="cost" id="" min="1" style="width:250px"
+                    value="{{ $product->cost }}" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="">Retail Price:</label>
+                <input type="number" class="form-control" name="price" id="" min="1" style="width:250px"
+                    value="{{ $product->price }}" placeholder="">
+            </div>
+            <div class="form-group">
                 <label for="">Product Details:</label>
                 <input type="text" class="form-control" value="{{ $product->details }}" name="details" id="" min="1"
                     style="width:250px" placeholder="Enter Product Details">

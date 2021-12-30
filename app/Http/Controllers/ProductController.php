@@ -48,6 +48,8 @@ class ProductController extends Controller
         $product = Product::create([
             'product_name' => $request->input('product_name'),
             'opening_stock' => $request->input('opening_stock'),
+            'cost' => $request->input('cost'),
+            'price' => $request->input('price'),
             'details' => $request->input('details'),
             'subcategory_id' => $request->input('subcategory'),
             'brand_id' => $request->input('brand'),
@@ -112,6 +114,8 @@ class ProductController extends Controller
             ->update([
                 'product_name' => $request->input('product_name'),
                 'opening_stock' => $request->input('opening_stock'),
+                'cost' => $request->input('cost'),
+                'price' => $request->input('price'),
                 'details' => $request->input('details'),
                 'subcategory_id' => $request->input('subcategory'),
                 'brand_id' => $request->input('brand'),

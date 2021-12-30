@@ -40,6 +40,16 @@
                     placeholder="Enter Product Stock">
             </div>
             <div class="form-group">
+                <label for="">Cost Price:</label>
+                <input type="number" class="form-control" name="cost" id="" min="1" style="width:250px"
+                    placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="">Retail Price:</label>
+                <input type="number" class="form-control" name="price" id="" min="1" style="width:250px"
+                    placeholder="">
+            </div>
+            <div class="form-group">
                 <label for="">Product Details:</label>
                 <input type="text" class="form-control" name="details" id="" min="1" style="width:250px"
                     placeholder="Enter Product Details">
