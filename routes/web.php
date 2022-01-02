@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\StockController;
 use App\Http\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -97,3 +98,19 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('showProdu
 Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('editProduct');
 
 Route::post('/product/{id}', [ProductController::class, 'update'])->name('updateProduct');
+
+//stock
+
+Route::get('/stock', [StockController::class, 'index']);
+
+Route::get('/stock/create', [StockController::class, 'create'])->name('stockCreate');
+
+Route::post('/stock', [StockController::class, 'store'])->name('storeStock');
+
+Route::get('/stock/{id}', [StockController::class, 'details'])->name('stockDetails');
+
+Route::get('/stock/{id}/{stockId}/delete', [StockController::class, 'destroy'])->name('destroyStock');
+
+Route::post('/stock/{id}/{stockId}', [StockController::class, 'update'])->name('updateStock');
+
+Route::get('/stock/{id}/{stockId}/edit', [StockController::class, 'edit'])->name('editStock');
