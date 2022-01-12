@@ -47,7 +47,7 @@
         <div class="row">
             <div class="col-lg-auto">
                 <div class="site-logo text-center text-lg-left">
-                    <a href="index.html">Shodai Bazar</a>
+                    <a href="/">Shodai Bazar</a>
                 </div>
             </div>
             <div class="col-lg-5 mx-auto mt-4 mt-lg-0">
@@ -119,7 +119,7 @@
                         </li>
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="">Wishlist</a>
+                                <a class="nav-link" href="{{ route('wishlist') }}">Wishlist</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="">Cart</a>

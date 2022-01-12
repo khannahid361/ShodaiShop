@@ -9,6 +9,7 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -82,7 +83,7 @@ Route::get('/slider/delete/{id}', [SliderController::class, 'destroy'])->name('d
 
 //Show slider
 
-Route::get('/', [PageController::class, 'showSlider']);
+Route::get('/', [PageController::class, 'showAll']);
 
 //Product
 
@@ -134,3 +135,13 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'PreventBac
     Route::get('/dashboard', [UserController::class, 'index'])->name('userDashboard');
     Route::get('/profile', [UserController::class, 'profile'])->name('userProfile');
 });
+
+//Customer
+Route::get('/product/description/{productId}', [PageController::class, 'productDescription'])->name('productDescription');
+
+Route::group(['middleware' => ['auth', 'isUser']], function () {
+    Route::post('/wishlist/{productId}', [WishlistController::class, 'addProduct'])->name('addWishlist');
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
+    Route::post('/wishlist/delete/{wishlistId}', [WishlistController::class, 'destroy'])->name('deleteWishlist');
+});
+

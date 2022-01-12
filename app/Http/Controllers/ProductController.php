@@ -136,4 +136,11 @@ class ProductController extends Controller
 
         return redirect('/product')->with('success', 'Data Added Successfully');
     }
+    public function customerIndex()
+    {
+        $products = Product::with('stocks')->get();
+        return view('customer.index', [
+            'products' => $products
+        ]);
+    }
 }
