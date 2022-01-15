@@ -81,8 +81,7 @@
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home <span
-                                    class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="electronics" data-bs-toggle="dropdown"
@@ -122,7 +121,10 @@
                                 <a class="nav-link" href="{{ route('wishlist') }}">Wishlist</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">Cart</a>
+                                <a class="nav-link" href="{{ route('cart') }}">Cart</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('myOrder') }}">Order</a>
                             </li>
                         @endauth
                     </ul>

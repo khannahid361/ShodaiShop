@@ -61,7 +61,6 @@
                                 <li>17.3" Full HD display 1920 x 1080 resolution boasts impressive color and clarity. IPS
                                     technology for wide viewing angles.</li>
                                 <li>Video Card NVIDIA® GeForce® RTX 2080 with 8GB GDDR6</li>
-                                <li><strong>Total Available: {{ $product->qty }}</strong></li>
                             </ul>
                         </div>
                     </div>
@@ -81,13 +80,13 @@
                                 </div>
                                 <div class="col-xl-5 col-md-9 col-sm-3 col-5 mx-auto mt-3">
                                     <div class="mb-3">
-                                        <label for="qty">Quantity</label>
-                                        <input type="number" id="qty" min="1" value="1" class="form-control" required>
+                                        <strong>Total Available: {{ $product->qty }}</strong>
                                     </div>
                                 </div>
                                 <div class="col-12 mt-3">
-                                    <button class="btn btn-outline-dark" type="button"><i
-                                            class="fas fa-cart-plus me-2"></i>Add to cart</button>
+                                    <a href="{{ route('add.to.cart', $product->id) }}"> <button
+                                            class="btn btn-outline-dark" type="button"><i
+                                                class="fas fa-cart-plus me-2"></i>Add to cart</button></a>
                                 </div>
                                 <div class="col-12 mt-3">
                                     <form method="POST"

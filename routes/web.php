@@ -10,6 +10,7 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -129,10 +130,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventBackHistory']], function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('adminDashboard');
+
     Route::get('/profile', [AdminController::class, 'profile'])->name('adminProfile');
 });
 Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'PreventBackHistory']], function () {
     Route::get('/dashboard', [UserController::class, 'index'])->name('userDashboard');
+
     Route::get('/profile', [UserController::class, 'profile'])->name('userProfile');
 });
 
@@ -141,7 +144,24 @@ Route::get('/product/description/{productId}', [PageController::class, 'productD
 
 Route::group(['middleware' => ['auth', 'isUser']], function () {
     Route::post('/wishlist/{productId}', [WishlistController::class, 'addProduct'])->name('addWishlist');
-    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
-    Route::post('/wishlist/delete/{wishlistId}', [WishlistController::class, 'destroy'])->name('deleteWishlist');
-});
 
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
+
+    Route::post('/wishlist/delete/{wishlistId}', [WishlistController::class, 'destroy'])->name('deleteWishlist');
+
+    Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+
+    Route::get('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add.to.cart');
+
+    Route::get('/deletecart/{id}', [CartController::class, 'remove'])->name('removeCart');
+
+    Route::post('/update-cart/{id}', [CartController::class, 'updateCart'])->name('update.cart');
+
+    Route::get('/go-to-checkout', [CartController::class, 'checkout'])->name('checkOut');
+
+    Route::post('/cart/checkout/confirm', [CartController::class, 'confirmCheckout'])->name('confirmCheckout');
+
+    Route::get('/myOrder', [CartController::class, 'myOrder'])->name('myOrder');
+
+    Route::get('/view/order/{id}', [CartController::class, 'viewOrder'])->name('viewOrder');
+});

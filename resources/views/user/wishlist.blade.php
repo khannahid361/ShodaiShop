@@ -1,7 +1,11 @@
 @extends('blank')
 
 @section('content')
-
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            <p style="text-align: center">{{ session()->get('success') }}</p>
+        </div>
+    @endif
     <div class="col-12">
         <!-- Main Content -->
         <div class="row">
@@ -41,11 +45,7 @@
                                                     {{ $wishlist->product->price }}
                                                 </span>
                                             </div>
-                                            <div class="col-6 mb-3 align-self-end">
-                                                <button class="btn btn-outline-dark" type="button"><i
-                                                        class="fas fa-cart-plus me-2"></i>Add to cart</button>
-                                            </div>
-                                            <div class="col-6 mb-3 align-self-end">
+                                            <div class="col-12 mb-3 align-self-end">
                                                 <form method="POST"
                                                     action="{{ route('deleteWishlist', ['wishlistId' => $wishlist->id]) }}">
                                                     @csrf
