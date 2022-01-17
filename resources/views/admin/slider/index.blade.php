@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('admin')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sliders</title>
-</head>
+@section('heading')
+    <h2>Slider <a class="btn btn-warning" href=" {{ route('createSlider') }} ">Add Slider</a> </h2>
+@endsection
 
-<body>
-    <h1>Slider <a href=" {{ route('createSlider') }} ">Add Slider</a> </h1>
-
-
-    <table>
+@section('content')
+    <table class="table table-display table-striped table-bordered">
         <tr>
             <th>Slider Title</th>
             <th>Slider Image</th>
@@ -39,7 +32,4 @@
         @endforelse
 
     </table>
-
-</body>
-
-</html>
+@endsection

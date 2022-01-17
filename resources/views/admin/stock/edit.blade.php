@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html>
+@extends('admin')
 
-<head>
-    <meta charset="utf-8">
-    <title>Product</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-</head>
+@section('heading')
+    <h2>Edit Stock</h2>
+@endsection
 
-<body>
+@section('content')
     <div class="container">
-        <h2>Edit Stock</h2>
         <form action="{{ route('updateStock', ['id' => $stock->product_id, 'stockId' => $stock->id]) }}" method="POST"
             enctype="multipart/form-data">
             @csrf
@@ -31,6 +25,4 @@
 
         @endif
     </div>
-</body>
-
-</html>
+@endsection

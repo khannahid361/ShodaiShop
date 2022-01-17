@@ -126,6 +126,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('myOrder') }}">Order</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('return') }}">Return</a>
+                            </li>
                         @endauth
                     </ul>
                 </div>

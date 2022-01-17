@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('admin')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Categories</title>
-</head>
+@section('heading')
+    <h2>View Category</h2>
+@endsection
 
-<body>
-
-    <table>
+@section('content')
+    <table class="table table-bordered table-striped">
         <tr>
             <th>Category Name</th>
             <th>Category Image</th>
@@ -26,7 +21,4 @@
         </tr>
 
     </table>
-
-</body>
-
-</html>
+@endsection

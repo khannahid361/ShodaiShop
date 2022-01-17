@@ -50,7 +50,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="float-left">
-                                    <button type="submit" class="btn btn-success">Place Order</button>
+                                    <button type="submit" class="btn btn-outline-success">Place Order</button>
                                 </div>
                             </div>
                         </form>

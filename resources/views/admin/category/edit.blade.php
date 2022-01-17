@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('admin')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+@section('heading')
 
-<body>
-    <h1>Create Category</h1>
+    <h2>Edit Category</h2>
 
-    <form action="/category/{{$category->id}}" method="POST" enctype="multipart/form-data">
+@endsection
+
+@section('content')
+    <form action="/category/{{ $category->id }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="text" placeholder="Input Category" value=" {{ $category->category_name }} " name="category_name">
+        <input type="text" class="form-control" placeholder="Input Category" value="{{ $category->category_name }}"
+            name="category_name">
         <input type="file" name="image" class="form-control" id="">
         <input type="submit" name="submit" value="Update Category">
     </form>
@@ -26,6 +23,4 @@
         @endforeach
 
     @endif
-</body>
-
-</html>
+@endsection

@@ -32,6 +32,8 @@
                                         <td>{{ $order->amount }}tk/-</td>
                                         <td>{{ $order->address . ',' . $order->area }}</td>
                                         <td>{{ $order['status'] == 0 ? 'Pending' : 'Confrimed' }}</td>
+                                        <td><a class="btn btn-outline-info"
+                                                href="{{ route('returnApply', $order->id) }}">Want to Return?</a></td>
                                     </tr>
                                 @empty
                                     Nothing ordered. Please Order Items !!!

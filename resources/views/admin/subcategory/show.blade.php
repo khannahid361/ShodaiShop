@@ -1,32 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('admin')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Categories</title>
-</head>
+@section('heading')
+    <h2>Subcategory</h2>
+@endsection
 
-<body>
-
-    <table>
+@section('content')
+    <table class="table table-display table-striped table-bordered">
         <tr>
             <th>Category Name</th>
-            <th>Category Image</th>
+            <th>Sub-category Name</th>
+            <th>Sub-Category Image</th>
 
         </tr>
 
         <tr>
-            <td> {{ $category->category_name }} </td>
             <td>
-                <img src="{{ asset('storage/images/' . $category->cat_image) }}" height="100" width="140" alt="">
+                {{ $subcategory->category->category_name }}
+            </td>
+            <td>{{ $subcategory->subcategory_name }}</td>
+            <td>
+                <img src="{{ asset('storage/images/' . $subcategory->subcat_image) }}" height="100" width="140" alt="">
             </td>
 
         </tr>
 
     </table>
-
-</body>
-
-</html>
+@endsection

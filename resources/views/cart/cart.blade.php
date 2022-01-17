@@ -65,26 +65,22 @@
                                             </tr>
                                         @endforeach
                                     @else
-                                        <td align="left" colspan="3">
-                                            <p class="font-bold text-l text-red py-6 px-4">
-                                                No Items in the Cart!!
-                                            </p>
-                                        </td>
+                                        <tr>
+                                            <td align="center" colspan="6">
+                                                <p>No Item In Cart</p>
+                                            </td>
+                                        </tr>
                                     @endif
                                 </tbody>
                                 <tfoot>
-                                    <tr>
-                                        <th colspan="3" class="text-right">Total</th>
-                                        <th>$4,000</th>
-                                        <th></th>
-                                    </tr>
                                 </tfoot>
                             </table>
                         </div>
-                        <div class="col-12 text-right">
-                            <button class="btn btn-outline-secondary me-3" type="submit">Update</button>
-                            <a href="{{ route('checkOut') }}" class="btn btn-outline-success">Checkout</a>
-                        </div>
+                        @if (session('cartItems'))
+                            <div class="col-12 text-right">
+                                <a href="{{ route('checkOut') }}" class="btn btn-outline-success">Checkout</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

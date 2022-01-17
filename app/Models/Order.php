@@ -19,4 +19,8 @@ class Order extends Model
     {
         return $this->hasMany(CartItem::class);
     }
+    public function productReturns()
+    {
+        return $this->hasMany(productReturns::class);
+    }
 }

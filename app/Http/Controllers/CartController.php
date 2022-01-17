@@ -122,4 +122,19 @@ class CartController extends Controller
             return redirect()->back();
         }
     }
+    public function getOrder()
+    {
+        $orders = Order::with('cartItems')->get();
+        return view('admin.order', [
+            'orders' => $orders
+        ]);
+    }
+    public function update(Request $request, $orderId)
+    {
+        Order::where('id', $orderId)
+            ->update([
+                'status' => $request->input('status')
+            ]);
+        return redirect()->back()->with('success', 'Order Status Updated');
+    }
 }

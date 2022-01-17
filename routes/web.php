@@ -11,12 +11,9 @@ use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProductReturnController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('customer.index');
-});
 
 //Category
 
@@ -127,12 +124,13 @@ Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+//Admin
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventBackHistory']], function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('adminDashboard');
 
     Route::get('/profile', [AdminController::class, 'profile'])->name('adminProfile');
 });
+//User
 Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'PreventBackHistory']], function () {
     Route::get('/dashboard', [UserController::class, 'index'])->name('userDashboard');
 
@@ -143,12 +141,13 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'PreventBac
 Route::get('/product/description/{productId}', [PageController::class, 'productDescription'])->name('productDescription');
 
 Route::group(['middleware' => ['auth', 'isUser']], function () {
+    //wishlist
     Route::post('/wishlist/{productId}', [WishlistController::class, 'addProduct'])->name('addWishlist');
 
     Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
 
     Route::post('/wishlist/delete/{wishlistId}', [WishlistController::class, 'destroy'])->name('deleteWishlist');
-
+    //session Cart
     Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 
     Route::get('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add.to.cart');
@@ -156,7 +155,7 @@ Route::group(['middleware' => ['auth', 'isUser']], function () {
     Route::get('/deletecart/{id}', [CartController::class, 'remove'])->name('removeCart');
 
     Route::post('/update-cart/{id}', [CartController::class, 'updateCart'])->name('update.cart');
-
+    //Order
     Route::get('/go-to-checkout', [CartController::class, 'checkout'])->name('checkOut');
 
     Route::post('/cart/checkout/confirm', [CartController::class, 'confirmCheckout'])->name('confirmCheckout');
@@ -164,4 +163,16 @@ Route::group(['middleware' => ['auth', 'isUser']], function () {
     Route::get('/myOrder', [CartController::class, 'myOrder'])->name('myOrder');
 
     Route::get('/view/order/{id}', [CartController::class, 'viewOrder'])->name('viewOrder');
+    //Product Return
+    Route::get('/return/product', [ProductReturnController::class, 'index'])->name('return');
+
+    Route::get('/return/product/{orderId}', [ProductReturnController::class, 'returnForm'])->name('returnApply');
+
+    Route::post('/store/return/{orderId}', [ProductReturnController::class, 'storeReturn'])->name('storeReturn');
+});
+Route::group(['middleware' => ['auth', 'isAdmin']], function () {
+    Route::get('/getOrder', [CartController::class, 'getOrder'])->name('getOrder');
+    Route::post('/update/order/{orderId}', [CartController::class, 'update'])->name('updateOrder');
+    Route::get('/getReturn', [ProductReturnController::class, 'getReturn'])->name('getReturn');
+    Route::post('/update/return/{returnId}', [ProductReturnController::class, 'update'])->name('updateReturn');
 });

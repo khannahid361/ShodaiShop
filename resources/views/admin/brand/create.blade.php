@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('admin')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+@section('heading')
+    <h2>Create Brand</h2>
+@endsection
 
-<body>
-    <h1>Create Brand</h1>
-
+@section('content')
     <form action="/brand" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="text" placeholder="Input Brand" value="" name="brand_name">
+        <input type="text" class="form-control" placeholder="Input Brand" value="" name="brand_name">
         <input type="file" name="image" class="form-control" id="">
-        <input type="submit" name="submit" value="Add Brand">
+        <input type="submit" class="btn btn-success" name="submit" value="Add Brand">
     </form>
     @if ($errors->any())
 
@@ -26,6 +20,4 @@
         @endforeach
 
     @endif
-</body>
-
-</html>
+@endsection

@@ -62,7 +62,8 @@
                                     <div class="col-12 bg-white text-center h-100 product-item">
                                         <div class="row h-100">
                                             <div class="col-12 p-0 mb-3">
-                                                <a href="{{ route('productDescription', ['productId' => $product->id]) }}">
+                                                <a
+                                                    href="{{ route('productDescription', ['productId' => $product->id]) }}">
                                                     <img src=" {{ asset('storage/images/' . $product->image_path) }} "
                                                         class="img-fluid">
                                                 </a>
@@ -81,8 +82,9 @@
                                                 </span>
                                             </div>
                                             <div class="col-12 mb-3 align-self-end">
-                                                <button class="btn btn-outline-dark" type="button"><i
-                                                        class="fas fa-cart-plus me-2"></i>Add to cart</button>
+                                                <a href="{{ route('add.to.cart', $product->id) }}"> <button
+                                                        class="btn btn-outline-dark" type="button"><i
+                                                            class="fas fa-cart-plus me-2"></i>Add to cart</button></a>
                                             </div>
                                         </div>
                                     </div>

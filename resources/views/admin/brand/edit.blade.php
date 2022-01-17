@@ -29,3 +29,12 @@
 </body>
 
 </html>
+@extends('admin')
+
+@section('heading')
+
+@endsection
+
+@section('content')
+
+@endsection

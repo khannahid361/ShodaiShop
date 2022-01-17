@@ -1,27 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('admin')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Brands</title>
-</head>
+@section('heading')
+    <h2>Brand <a class="btn btn-warning" href=" {{ route('createBrand') }} ">Add Brand</a> </h2>
+@endsection
 
-<body>
-    <h1>Brand <a href=" {{ route('createBrand') }} ">Add Brand</a> </h1>
-
-
-    <table>
+@section('content')
+    <table class="table table-display table-striped table-bordered">
         <tr>
             <th>Brand Name</th>
             <th>Brand Image</th>
             <th>Action</th>
+            <th></th>
         </tr>
         @forelse ($brands as $brand)
             <tr>
-                <td><a
-                        href=" {{ route('showBrand', ['id' => $brand->id]) }} ">{{ $brand->brand_name }}</a>
+                <td><a href=" {{ route('showBrand', ['id' => $brand->id]) }} ">{{ $brand->brand_name }}</a>
                 </td>
                 <td>
                     <img src="{{ asset('storage/images/' . $brand->brand_image) }}" height="100" width="140" alt="">
@@ -40,7 +33,4 @@
         @endforelse
 
     </table>
-
-</body>
-
-</html>
+@endsection

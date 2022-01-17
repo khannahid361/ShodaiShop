@@ -1,33 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('admin')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+@section('heading')
+    <h2>Edit Sub-Category</h2>
+@endsection
 
-<body>
-    <h1>Edit Sub-Category</h1>
-
+@section('content')
     <form action="{{ route('updateSubcatgory', ['id' => $subcategory->id]) }}" method="POST"
         enctype="multipart/form-data">
         @csrf
-        <select name="category_id" id="">
+        <select class="form-control" name="category_id" id="">
             <option value=" {{ $subcategory->category_id }} ">
                 {{ $subcategory->category->category_name }}
             </option>
             @forelse ($categories as $category)
                 <option value=" {{ $category->id }} "> {{ $category->category_name }} </option>
             @empty
-                <option>Category Empty</option>
+
             @endforelse
         </select>
-        <input type="text" placeholder="Input Sub-Category" value="{{ $subcategory->subcategory_name }}"
-            name="subcategory_name">
+        <input type="text" class="form-control" placeholder="Input Sub-Category"
+            value="{{ $subcategory->subcategory_name }}" name="subcategory_name">
         <input type="file" name="image" class="form-control" id="">
-        <input type="submit" name="submit" value="Update Category">
+        <input type="submit" class="btn btn-success" name="submit" value="Update Category">
     </form>
     @if ($errors->any())
 
@@ -38,6 +32,4 @@
         @endforeach
 
     @endif
-</body>
-
-</html>
+@endsection

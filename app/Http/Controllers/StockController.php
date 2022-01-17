@@ -18,6 +18,16 @@ class StockController extends Controller
             foreach ($product->stocks as $stock) {
                 $product->qty += $stock->stock;
             }
+            foreach ($product->productReturns as $return) {
+                if ($return->status == 1) {
+                    $product->qty += $return->quantity;
+                }
+            }
+            foreach ($product->cartItems as $cart) {
+                if ($cart->status == 1) {
+                    $product->qty -= $cart->quantity;
+                }
+            }
         }
         return view('admin.stock.index', compact('products'));
     }
